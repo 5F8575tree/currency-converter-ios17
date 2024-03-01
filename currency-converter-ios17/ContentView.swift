@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showInfoView = false
+    @State var yenValue = ""
+    @State var dollarValue = ""
+    
     var body: some View {
         ZStack {
                 // bg img
@@ -26,7 +30,7 @@ struct ContentView: View {
                     .frame(height:200)
                 // currency exchange text
                 Text("How much is this?")
-                    .font(.largeTitle)
+                    .font(.title)
                     .foregroundStyle(.white)
                 // conversion section
                 HStack {
@@ -34,25 +38,26 @@ struct ContentView: View {
                     VStack {
                         // currency
                         HStack {
+                            // curency text
+                            Text("Japanese Yen")
+                                .foregroundStyle(.white)
+                            
                             // currency img
                             Image(systemName: "yensign.circle.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 24)
-                                .foregroundStyle(.white)
-                            
-                            // curency text
-                            Text("Japanese Yen")
+                                .frame(height: 20)
                                 .foregroundStyle(.white)
                         }
                         // text field
-                        Text("text field")
+                        TextField("Enter Yen", text: $yenValue)
+                            .textFieldStyle(.roundedBorder)
                     }
                     // equal sign
                     Image(systemName: "equal")
                         .resizable()
                         .scaledToFit()
-                        .frame(height:12)
+                        .frame(height:8)
                         .padding([.leading, .trailing])
                         .foregroundStyle(.white)
                     // right conversion sec
@@ -60,28 +65,48 @@ struct ContentView: View {
                         // currency
                         HStack {
                             // currency text
-                            Text("US Dollars")
-                                .foregroundStyle(.white)
                             // curency img
                             Image(systemName: "dollarsign.circle.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 24)
+                                .frame(height: 20)
                                 .foregroundStyle(.white)
+                            
+                            Text("US Dollars")
+                                .foregroundStyle(.white)
+                            
                         }
                         // text field
-                        Text("text field")
+                        TextField("Enter Dollars", text: $dollarValue)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
+                .padding([.top, .bottom], 32)
+                .padding(.horizontal, 12)
+                .background(.black.opacity(0.25))
                 Spacer()
                 Spacer()
                 // info button
-                Image(systemName: "info.circle.fill")
-                    .font(.largeTitle)
-                    .foregroundStyle(.white)
-                    .padding(.bottom, 100)
+                HStack {
+                    Spacer()
+                    Button {
+                        // logic part
+                        showInfoView.toggle()
+                    } label: {
+                        // design part
+                            Image(systemName: "info.circle.fill")
+                                .font(.largeTitle)
+                                .foregroundStyle(.white)
+                    }
+                }
             }
 //            .border(.yellow)
+            .padding(66)
+            .padding([.bottom], 24)
+        }
+        .sheet(isPresented: $showInfoView) {
+            InfoView()
         }
     }
 }
