@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SelectCurrencyView: View {
     @Environment(\.dismiss) var closeInfoView
+    @Binding var convertingFrom: Currency
+    @Binding var convertingTo: Currency
     
     var body: some View {
         ZStack {
@@ -20,27 +22,20 @@ struct SelectCurrencyView: View {
             
             VStack {
                 Text("Select currency to exchange")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .padding([.bottom], 32)
                 
-                HStack {
-                    CurrencySelectIcon(icon: "yensign.circle.fill", currencyName: "Japanese Yen")
-                    CurrencySelectIcon(icon: "dollarsign.circle.fill", currencyName: "US Dollar")
-                    CurrencySelectIcon(icon: "sterlingsign.circle.fill", currencyName: "British Pound")
-                }
-                .padding([.bottom], 54)
+                ExchangingGridView(selectedCurrency: $convertingFrom)
                 
                 Text("Select currency to convert to")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .padding([.bottom], 32)
                 
-                HStack {
-                    CurrencySelectIcon(icon: "yensign.circle.fill", currencyName: "Japanese Yen")
-                    CurrencySelectIcon(icon: "dollarsign.circle.fill", currencyName: "US Dollar")
-                    CurrencySelectIcon(icon: "sterlingsign.circle.fill", currencyName: "British Pound")
-                }
+                ExchangingGridView(selectedCurrency: $convertingTo)
              
                 Button("Return") {
                     closeInfoView()
@@ -48,14 +43,13 @@ struct SelectCurrencyView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.black)
                 .font(.title3)
-                .padding([.top], 72)
+                .padding([.top], 8)
             }
+            .padding([.top], 32)
         }
     }
 }
 
 #Preview {
-    SelectCurrencyView()
+    SelectCurrencyView(convertingFrom: .constant(.gbp), convertingTo: .constant(.usd))
 }
-
-

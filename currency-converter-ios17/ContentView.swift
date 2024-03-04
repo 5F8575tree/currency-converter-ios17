@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showInfoView = false
-    @State var yenValue = ""
-    @State var dollarValue = ""
+    @State var showSelectCurrency = false
+    @State var convertingFrom: Currency = .jpy
+    @State var convertingTo: Currency = .usd
+    @State var convertFromValue = ""
+    @State var convertToValue = ""
     
     var body: some View {
         ZStack {
-                // bg img
+
             Image("bg-dark-purple")
                 .resizable()
                 .ignoresSafeArea()
@@ -23,61 +26,60 @@ struct ContentView: View {
             
             VStack {
                 Spacer()
-                // prancing pony img
+
                 Image("currency-logo")
                     .resizable()
                     .scaledToFit()
                     .frame(height:200)
-                // currency exchange text
+
                 Text("How much is this?")
                     .font(.title)
                     .foregroundStyle(.white)
-                // conversion section
+
                 HStack {
-                    // left conversions sect
                     VStack {
-                        // currency
                         HStack {
-                            // curency text
-                            Text("Japanese Yen")
+                            
+                            Text(convertingFrom.name)
                                 .foregroundStyle(.white)
                             
-                            // currency img
-                            Image(systemName: "yensign.circle.fill")
+                            Image(systemName: convertingFrom.icon)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 20)
                                 .foregroundStyle(.white)
                         }
-                        // text field
-                        TextField("Enter Yen", text: $yenValue)
+                        .onTapGesture {
+                            showSelectCurrency.toggle()
+                        }
+                    
+                        TextField("Enter \(convertingFrom.name)", text: $convertFromValue)
                             .textFieldStyle(.roundedBorder)
                     }
-                    // equal sign
+
                     Image(systemName: "equal")
                         .resizable()
                         .scaledToFit()
                         .frame(height:8)
                         .padding([.leading, .trailing])
                         .foregroundStyle(.white)
-                    // right conversion sec
+                    
                     VStack {
-                        // currency
                         HStack {
-                            // currency text
-                            // curency img
-                            Image(systemName: "dollarsign.circle.fill")
+                            Image(systemName: convertingTo.icon)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 20)
                                 .foregroundStyle(.white)
                             
-                            Text("US Dollars")
+                            Text(convertingTo.name)
                                 .foregroundStyle(.white)
                             
                         }
-                        // text field
-                        TextField("Enter Dollars", text: $dollarValue)
+                        .onTapGesture {
+                            showSelectCurrency.toggle()
+                        }
+                        TextField("Enter \(convertingTo.name)", text: $convertToValue)
                             .textFieldStyle(.roundedBorder)
                             .multilineTextAlignment(.trailing)
                     }
@@ -87,26 +89,26 @@ struct ContentView: View {
                 .background(.black.opacity(0.25))
                 Spacer()
                 Spacer()
-                // info button
+
                 HStack {
                     Spacer()
                     Button {
-                        // logic part
                         showInfoView.toggle()
                     } label: {
-                        // design part
                             Image(systemName: "info.circle.fill")
                                 .font(.largeTitle)
                                 .foregroundStyle(.white)
                     }
                 }
             }
-//            .border(.yellow)
             .padding(66)
             .padding([.bottom], 24)
         }
         .sheet(isPresented: $showInfoView) {
             InfoView()
+        }
+        .sheet(isPresented: $showSelectCurrency) {
+            SelectCurrencyView(convertingFrom: $convertingFrom, convertingTo: $convertingTo)
         }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7821D2172B9595C20006446D /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7821D2162B9595C20006446D /* Currency.swift */; };
+		7821D21B2B95C1B50006446D /* ExchangingGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7821D21A2B95C1B50006446D /* ExchangingGridView.swift */; };
 		786426092B91B20900BC9FF7 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786426082B91B20900BC9FF7 /* InfoView.swift */; };
 		7864260B2B91BCC900BC9FF7 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7864260A2B91BCC900BC9FF7 /* ExchangeRate.swift */; };
 		7864260D2B9204D500BC9FF7 /* SelectCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7864260C2B9204D500BC9FF7 /* SelectCurrencyView.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7821D2162B9595C20006446D /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		7821D21A2B95C1B50006446D /* ExchangingGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangingGridView.swift; sourceTree = "<group>"; };
 		786426082B91B20900BC9FF7 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		7864260A2B91BCC900BC9FF7 /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		7864260C2B9204D500BC9FF7 /* SelectCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				78C34ADD2B91870B0053596D /* currency_converter_ios17App.swift */,
 				78C34ADF2B91870B0053596D /* ContentView.swift */,
 				7864260C2B9204D500BC9FF7 /* SelectCurrencyView.swift */,
+				7821D21A2B95C1B50006446D /* ExchangingGridView.swift */,
+				7821D2162B9595C20006446D /* Currency.swift */,
 				7864260E2B920CBD00BC9FF7 /* CurrencySelectIcon.swift */,
 				786426082B91B20900BC9FF7 /* InfoView.swift */,
 				7864260A2B91BCC900BC9FF7 /* ExchangeRate.swift */,
@@ -149,11 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7821D21B2B95C1B50006446D /* ExchangingGridView.swift in Sources */,
 				7864260B2B91BCC900BC9FF7 /* ExchangeRate.swift in Sources */,
 				7864260F2B920CBD00BC9FF7 /* CurrencySelectIcon.swift in Sources */,
 				78C34AE02B91870B0053596D /* ContentView.swift in Sources */,
 				786426092B91B20900BC9FF7 /* InfoView.swift in Sources */,
 				78C34ADE2B91870B0053596D /* currency_converter_ios17App.swift in Sources */,
+				7821D2172B9595C20006446D /* Currency.swift in Sources */,
 				7864260D2B9204D500BC9FF7 /* SelectCurrencyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,7 +27,7 @@ struct CurrencySelectIcon: View {
                 .background(.black.opacity(0.75))
         }
         .padding([.all], 8)
-        .frame(width: 116, height: 116)
+        .frame(width: 100, height: 100)
         .background(.black.opacity(0.75))
         .clipShape(.rect(cornerRadius:6))
     }
